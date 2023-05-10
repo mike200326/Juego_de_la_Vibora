@@ -8,7 +8,7 @@ snake = [vector(10, 0)]
 aim = vector(0, -10)
 
 # Creemos una lista de colores para que la víbora cambie de color
-colors = ['black', 'blue', 'brown', 'cyan', 'gray']
+colors = ['black', 'blue', 'yellow', 'cyan', 'gray']
 # Elegimos un color aleatorio de la lista
 random_color = choice(colors)
 def change(x, y):
@@ -44,7 +44,7 @@ def move():
     for body in snake:
         square(body.x, body.y, 9, random_color)
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, random_color)
     update()
     ontimer(move, 100)
     ontimer(move_food, 500)  
