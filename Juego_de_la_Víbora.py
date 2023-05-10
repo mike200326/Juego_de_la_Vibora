@@ -7,7 +7,9 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
+# Creemos una lista de colores para que la víbora cambie de color
 colors = ['black', 'blue', 'brown', 'cyan', 'gray']
+# Elegimos un color aleatorio de la lista
 random_color = choice(colors)
 def change(x, y):
     "Change snake direction."
