@@ -3,7 +3,6 @@ from random import randrange
 from freegames import square, vector
 from random import choice
 
-
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
@@ -45,22 +44,23 @@ def move():
     for body in snake:
         square(body.x, body.y, 9, random_color)
 
-    square(food.x, food.y, 9, random_color)
+    square(food.x, food.y, 9, 'green')
     update()
     ontimer(move, 100)
+    ontimer(move_food, 500)  
+    # tiempo de espera para que la comida se mueva
 
-# generamos una función para que la comida se mueva aleatoriamente
-    dx = randrange(-1, 2)
-    dy = randrange(-1, 2)
-    food_move = vector(dx, dy)
-    food_new = food + food_move
+def move_food():
+    # Movimiento de la comida de forma aleatoria
+    steps = [-10, 10]
+    food_move = vector(choice(steps), choice(steps))
+    food.move(food_move)
 
-    # revisamos que la comida no se salga de los límites
-    if inside(food_new, 10):
-        food = food_new
+    if not inside(food):
+        food.x = food.x - food_move.x
+        food.y = food.y - food_move.y
 
     update()
-    ontimer(move, 100)
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
